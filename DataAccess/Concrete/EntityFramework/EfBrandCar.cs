@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfBrandCar:IBrandDal
+    public class EfBrandCar: EfEntityRepositoryBase<Brand, DbRecapContext>, IBrandDal
     {
         public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
