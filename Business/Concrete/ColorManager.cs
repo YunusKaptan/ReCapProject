@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
+using Business.Constants;
+using Business.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
 namespace Business.Concrete
 {
-    public class ColorManager:IColorService
+    public class ColorManager : IColorService
     {
         IColorDal _colorDal;
 
@@ -16,32 +18,32 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return _colorDal.GetAll();
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.ColorsListed);
         }
 
-        public List<Color> GetCarsByColorId(int id)
+        public IDataResult<List<Color>> GetCarsByColorId(int id)
         {
-            return _colorDal.GetAll(p => p.ColorId == id);
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(p => p.ColorId == id), Messages.ColorsListed);
         }
 
-        public void Add(Color color)
+        public IResult Add(Color color)
         {
-           _colorDal.Add(color);
-           Console.WriteLine("Color successfully added");
+            _colorDal.Add(color);
+            return new SuccessResult(Messages.ColorAdded);
         }
 
-        public void Update(Color color)
+        public IResult Update(Color color)
         {
             _colorDal.Update(color);
-            Console.WriteLine("Color successfully updated!");
+            return new SuccessResult(Messages.ColorUpdated);
         }
 
-        public void Delete(Color color)
+        public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
-            Console.WriteLine("Color successfully  deleted!");
+            return new SuccessResult(Messages.ColorDeleted);
         }
     }
 }

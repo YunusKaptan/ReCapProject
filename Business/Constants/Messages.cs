@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Business.Constants
+{
+    public static class Messages
+    {
+        public static string CarAdded = "Car successfully Added!";
+        public static string CarUpdated = "Car successfully updated!";
+        public static string CarDeleted = "Car successfully deleted!";
+        public static string CarConditon = "Car description must be at least 2 characters or car daily price must be greater than 0. ";
+        public static string CarsListed = "Car listed!";
+    
+        public static string MaintenanceTime = " System maintenance!";
+        public static string BrandAdded = "Brand successfully added";
+        public static string BrandUpdated = "Brand successfully updated";
+        public static string BrandDeleted = "Brand successfully deleted";
+        public static string BrandsListed = "Brands listed!";
+
+        public static string ColorAdded = "Color successfully added";
+        public static string ColorUpdated = "Color successfully updated";
+        public static string ColorDeleted = "Color successfully deleted";
+        public static string ColorsListed = "Colors listed!";
+    }
+}

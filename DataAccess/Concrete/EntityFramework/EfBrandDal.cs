@@ -8,7 +8,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfBrandCar: EfEntityRepositoryBase<Brand, DbRecapContext>, IBrandDal
+    public class EfBrandDal : EfEntityRepositoryBase<Brand, DbRecapContext>, IBrandDal
     {
         public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {

@@ -10,56 +10,24 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            // CarAddByFilter();
             GetCarDetails();
         }
 
         private static void GetCarDetails()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+            if (result.Success == true)
             {
-                Console.WriteLine(car.CarId + "/" + car.ColorName + "/" + car.BrandName + "/" + car.Description);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.CarId + "/" + car.ColorName + "/" + car.BrandName + "/" + car.Description);
+                }
             }
-        }
-
-        private static void CarAddByFilter()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-
-            foreach (var car in carManager.GetCarsByBrandId(1))
+            else
             {
-                Console.WriteLine(car.Description);
+                Console.WriteLine(result.Message);
             }
-
-            foreach (var car in carManager.GetCarsByColorId(2))
-            {
-                Console.WriteLine(car.Description);
-            }
-
-            Console.WriteLine("CAR ADD SECTION");
-
-            Car car1 = new Car
-            {
-                BrandId = 1,
-                ColorId = 1,
-                ModelYear = "2016",
-                DailyPrice = 0,
-                Description = "Alfa Romeo"
-            };
-
-            carManager.Add(car1);
-
-            Car car2 = new Car
-            {
-                BrandId = 1,
-                ColorId = 1,
-                ModelYear = "2018",
-                DailyPrice = 0,
-                Description = "a"
-            };
-
-            carManager.Add(car2);
         }
     }
 }
