@@ -14,14 +14,26 @@ namespace ConsoleUI
 
             // AddUser();
 
-            CheckRentalManager();
+            //CheckRentalManager();
+            UserGetAll();
         }
+
+        private static void UserGetAll()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.Id + "  " + user.FirstName + " " + user.LastName + " " + user.EMail + "  " +
+                                  user.Password);
+            }
+        }
+
 
         private static void CheckRentalManager()
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             var result = rentalManager.Add(new Rental
-                {CarId = 2, CustomerId = 2, RentDate = DateTime.Now.AddDays(-2), ReturnDate = null});
+            { CarId = 2, CustomerId = 2, RentDate = DateTime.Now.AddDays(-2), ReturnDate = null });
             Console.WriteLine(result.Message);
         }
 
