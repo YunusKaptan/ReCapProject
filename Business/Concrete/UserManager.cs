@@ -12,7 +12,6 @@ namespace Business.Concrete
     public class UserManager:IUserService
     {
         private IUserDal _userDal;
-        private IUserService _userServiceImplementation;
 
         public UserManager(IUserDal userDal)
         {

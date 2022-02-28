@@ -38,5 +38,9 @@ namespace Business.Constants
         public static string CustomerDeleted = "Customer successfully deleted";
         public static string CustomersListed = "Customers listed";
 
+        public static string CarRented = "The car has not been received yet.Please check for another car.";
+
+
+
     }
 }

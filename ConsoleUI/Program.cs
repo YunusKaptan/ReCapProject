@@ -10,7 +10,26 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            GetCarDetails();
+            // GetCarDetails();
+
+            // AddUser();
+
+            CheckRentalManager();
+        }
+
+        private static void CheckRentalManager()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental
+                {CarId = 2, CustomerId = 2, RentDate = DateTime.Now.AddDays(-2), ReturnDate = null});
+            Console.WriteLine(result.Message);
+        }
+
+        private static void AddUser()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            userManager.Add(new User
+            { Id = 8, FirstName = "Agata", LastName = "Milewska", EMail = "Agata@gmail.com", Password = "12345" });
         }
 
         private static void GetCarDetails()
