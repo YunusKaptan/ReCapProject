@@ -1,5 +1,6 @@
 ﻿using System;
 using Business.Concrete;
+using Business.Constants;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -10,12 +11,19 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            // GetCarDetails();
-
-            // AddUser();
-
+            //GetCarDetails();
+            //AddUser();
             //CheckRentalManager();
-            UserGetAll();
+            //UserGetAll();
+            //AddCustomer();
+            
+        }
+
+        private static void AddCustomer()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var result = customerManager.Add(new Customer {UserId = 8, CompanyName = "Olx"});
+            Console.WriteLine(result.Message);
         }
 
         private static void UserGetAll()
@@ -28,7 +36,6 @@ namespace ConsoleUI
             }
         }
 
-
         private static void CheckRentalManager()
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
@@ -40,8 +47,8 @@ namespace ConsoleUI
         private static void AddUser()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            userManager.Add(new User
-            { Id = 8, FirstName = "Agata", LastName = "Milewska", EMail = "Agata@gmail.com", Password = "12345" });
+            var result = userManager.Add(new User { FirstName ="Arda",LastName = "Guler",EMail = "arda@gmail.com",Password = "arda123"});
+            Console.WriteLine(result.Message);
         }
 
         private static void GetCarDetails()
