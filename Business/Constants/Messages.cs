@@ -9,7 +9,7 @@ namespace Business.Constants
         public static string CarAdded = "Car successfully Added!";
         public static string CarUpdated = "Car successfully updated!";
         public static string CarDeleted = "Car successfully deleted!";
-        public static string CarConditon = "Car description must be at least 2 characters or car daily price must be greater than 0. ";
+        public static string CarCondition = "Car description must be at least 2 characters or car daily price must be greater than 0. ";
         public static string CarsListed = "Car listed!";
     
         public static string MaintenanceTime = " System maintenance!";
