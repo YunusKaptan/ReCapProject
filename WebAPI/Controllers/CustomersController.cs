@@ -11,30 +11,30 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorsController : ControllerBase
+    public class CustomersController : ControllerBase
     {
-        private IColorService _colorService;
+        private ICustomerService _costumerService;
 
-        public ColorsController(IColorService colorService)
+        public CustomersController(ICustomerService costumerService)
         {
-            _colorService = colorService;
+            _costumerService = costumerService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _colorService.GetAll();
+            var result = _costumerService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-        
-        [HttpGet("getcolorbyid")]
-        public IActionResult GetColorById(int id)
+
+        [HttpGet("getcustomerbyid")]
+        public IActionResult GetCustomerById(int customerId)
         {
-            var result = _colorService.GetColorById(id);
+            var result = _costumerService.GetCustomerById(customerId);
             if (result.Success)
             {
                 return Ok(result.Data);
@@ -43,9 +43,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Color color)
+        public IActionResult Add(Customer customer)
         {
-            var result = _colorService.Add(color);
+            var result = _costumerService.Add(customer);
             if (result.Success)
             {
                 return Ok(result);
@@ -54,9 +54,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Color color)
+        public IActionResult Delete(Customer customer)
         {
-            var result = _colorService.Delete(color);
+            var result = _costumerService.Delete(customer);
             if (result.Success)
             {
                 return Ok(result);
@@ -64,10 +64,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
-        public IActionResult Update(Color color)
+        [HttpPost("Update")]
+        public IActionResult Update(Customer customer)
         {
-            var result = _colorService.Update(color);
+            var result = _costumerService.Update(customer);
             if (result.Success)
             {
                 return Ok(result);

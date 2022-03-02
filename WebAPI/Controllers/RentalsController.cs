@@ -11,41 +11,41 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorsController : ControllerBase
+    public class RentalsController : ControllerBase
     {
-        private IColorService _colorService;
+        private IRentalService _rentalService;
 
-        public ColorsController(IColorService colorService)
+        public RentalsController(IRentalService rentalService)
         {
-            _colorService = colorService;
+            _rentalService = rentalService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _colorService.GetAll();
+            var result = _rentalService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-        
-        [HttpGet("getcolorbyid")]
-        public IActionResult GetColorById(int id)
+
+        [HttpGet("getrentalbyid")]
+        public IActionResult GetRentalById(int rentalId)
         {
-            var result = _colorService.GetColorById(id);
+            var result = _rentalService.GetRentalById(rentalId);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result);
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Color color)
+        public IActionResult Add(Rental rental)
         {
-            var result = _colorService.Add(color);
+            var result = _rentalService.Add(rental);
             if (result.Success)
             {
                 return Ok(result);
@@ -54,9 +54,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Color color)
+        public IActionResult Delete(Rental rental)
         {
-            var result = _colorService.Delete(color);
+            var result = _rentalService.Delete(rental);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Color color)
+        public IActionResult Update(Rental rental)
         {
-            var result = _colorService.Update(color);
+            var result = _rentalService.Update(rental);
             if (result.Success)
             {
                 return Ok(result);

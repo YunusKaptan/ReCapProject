@@ -68,9 +68,9 @@ namespace WebAPI.Controllers
             var result = _carService.Add(car);
             if (result.Success)
             {
-                return Ok(result);
+                return Ok(result.Success);
             }
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
         [HttpPost("delete")]
         public IActionResult Delete(Car car)
