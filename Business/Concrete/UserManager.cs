@@ -4,12 +4,15 @@ using System.Text;
 using Business.Abstract;
 using Business.Constants;
 using Business.Utilities.Results;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
 namespace Business.Concrete
 {
-    public class UserManager:IUserService
+    public class UserManager : IUserService
     {
         private IUserDal _userDal;
 
@@ -28,8 +31,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.Id == userId));
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
+            ValidationTool.Validate(new UserValidator(), user);
+
             _userDal.Add(user);
             return new SuccessResult(Messages.UserAdded);
         }

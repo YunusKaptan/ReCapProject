@@ -4,6 +4,9 @@ using System.Text;
 using Business.Abstract;
 using Business.Constants;
 using Business.Utilities.Results;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -28,8 +31,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Customer>>(_costumerDal.GetAll(c => c.CustomerId == customerId));
         }
 
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
+            ValidationTool.Validate(new CustomerValidator(), customer);
+
             _costumerDal.Add(customer);
             return new SuccessResult(Messages.CustomerAdded);
         }
