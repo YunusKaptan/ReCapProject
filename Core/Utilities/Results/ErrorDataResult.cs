@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Business.Utilities.Results
+﻿namespace Core.Utilities.Results
 {
     public class ErrorDataResult<T>:DataResult<T>
     {
