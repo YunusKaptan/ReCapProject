@@ -4,6 +4,8 @@ using System.Text;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+using System.Linq;
 
 
 namespace Business.Abstract
