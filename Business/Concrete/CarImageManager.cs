@@ -8,6 +8,7 @@ using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,9 @@ namespace Business.Concrete
             {
                 return result;
             }
-            carImage.ImagePath = _fileHelper.Upload(file, PathConstants.ImagesPath);
+
+
+            carImage.ImagePath = _fileHelper.Upload(file, PathConstants.ImagesPath, carImage.ImagePath);
             carImage.Date = DateTime.Now;
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.CarImageAdded);
