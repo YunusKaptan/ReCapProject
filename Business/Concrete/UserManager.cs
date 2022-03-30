@@ -21,14 +21,25 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
+
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UsersListed);
         }
 
-        public IDataResult<List<User>> GetUserById(int userId)
+        public IDataResult<List<User>> GetUserById(int id)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.Id == userId));
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(p => p.Id == id), Messages.ColorsListed);
+
+        }
+
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(u => u.EMail == email);
         }
 
         [ValidationAspect(typeof(UserValidator))]

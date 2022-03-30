@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Business.Constants
         public static string CarDeleted = "Car successfully deleted!";
         public static string CarCondition = "Car description must be at least 2 characters or car daily price must be greater than 0. ";
         public static string CarsListed = "Car listed!";
-    
+
         public static string MaintenanceTime = " System maintenance!";
         public static string BrandAdded = "Brand successfully added";
         public static string BrandUpdated = "Brand successfully updated";
@@ -41,8 +42,14 @@ namespace Business.Constants
 
         public static string CarRented = "The car has not been received yet.Please check for another car.";
 
-        public static string CarImageAdded= "Car image successfully added";
+        public static string CarImageAdded = "Car image successfully added";
 
-        public static string AuthorizationDenied= "Authorization denied";
+        public static string AuthorizationDenied = "Authorization denied";
+        public static string UserRegistered = "User registered";
+        public static string UserNotFound = "User not found";
+        public static string PasswordError = "Password error";
+        public static string SuccessfulLogin = "Successful login";
+        public static string UserAlreadyExists = "User already exists";
+        public static string AccessTokenCreated = "Access token created";
     }
 }
