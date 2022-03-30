@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -41,5 +42,7 @@ namespace Business.Constants
         public static string CarRented = "The car has not been received yet.Please check for another car.";
 
         public static string CarImageAdded= "Car image successfully added";
+
+        public static string AuthorizationDenied= "Authorization denied";
     }
 }
