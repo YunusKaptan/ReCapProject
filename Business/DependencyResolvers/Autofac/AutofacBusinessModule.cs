@@ -45,8 +45,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
             
-            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
-
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
