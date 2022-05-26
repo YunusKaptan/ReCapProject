@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
 
             var result = _costumerService.GetAll();
             if (result.Success)
@@ -40,7 +40,7 @@ namespace WebAPI.Controllers
             var result = _costumerService.GetCustomerById(customerId);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result);
         }

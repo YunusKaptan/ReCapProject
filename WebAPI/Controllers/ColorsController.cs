@@ -24,7 +24,6 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(3000);
             var result = _colorService.GetAll();
             if (result.Success)
             {
@@ -39,7 +38,7 @@ namespace WebAPI.Controllers
             var result = _colorService.GetColorById(id);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result);
         }

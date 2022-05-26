@@ -26,7 +26,6 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(3000);
             var result = _brandService.GetAll();
             if (result.Success)
             {
@@ -41,7 +40,7 @@ namespace WebAPI.Controllers
             var result = _brandService.GetBrandById(id);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result);
         }
