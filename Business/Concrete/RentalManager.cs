@@ -9,6 +9,7 @@ using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -30,6 +31,11 @@ namespace Business.Concrete
         public IDataResult<List<Rental>> GetRentalById(int rentalId)
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CarId == rentalId));
+        }
+
+        public IDataResult<List<RentalDetailDto>> GetRentalsDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalsDetails());
         }
 
         [ValidationAspect(typeof(RentalValidator))]
