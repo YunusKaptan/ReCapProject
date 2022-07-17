@@ -15,7 +15,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.DailyPrice).NotEmpty();
             RuleFor(p => p.DailyPrice).GreaterThan(0);
             RuleFor(p => p.DailyPrice).GreaterThanOrEqualTo(10).When(p => p.CategoryId == 1);
-            RuleFor(p => p.Description).Must(StartWithA).WithMessage("Car description must be start with A");
+            //RuleFor(p => p.Description).Must(StartWithA).WithMessage("Car description must be start with A");
 
         }
 
