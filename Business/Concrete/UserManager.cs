@@ -33,7 +33,7 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetUserById(int id)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(p => p.Id == id), Messages.ColorsListed);
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(p => p.Id == id), Messages.UsersListed);
 
         }
 
